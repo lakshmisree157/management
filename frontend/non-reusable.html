@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Non-Reusable Items - Garbage Collection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f0f5;
+            color: #333;
+        }
+
+        header {
+            background: #dc3545;
+            color: white;
+            padding: 15px;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .section-title {
+            color: #b12b31;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .non-reusable-items {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .non-reusable-items ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .non-reusable-items li {
+            padding: 12px 0;
+            text-align: left;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .non-reusable-items li:last-child {
+            border-bottom: none;
+        }
+
+        .non-reusable-items img {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+
+        .non-reusable-items input {
+            width: 80px;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        button {
+            background: #dc3545;
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-top: 30px;
+        }
+
+        button:hover {
+            background: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <header>Select Your Non-Reusable Items</header>
+
+    <section class="container">
+        <form id="nonReusableItemsForm" action="submission.html" method="POST">
+
+            <div class="section non-reusable-items">
+                <h3 class="section-title">Non-Reusable Items</h3>
+                <ul>
+                    <li>
+                        <img src="https://image.made-in-china.com/226f3j00aYsiFCVBZoRq/55mm-175g-200g-Pet-Preform-for-5-Gallon-Disposable-Water-Bottle.webp" alt="Disposable Water Bottles">
+                        <span>Disposable Water Bottles</span>
+                        <input type="number" name="disposable_water_bottles" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNDqJKfzXpvqdxxjo6H7IVufuj_aWqoYsV7A&s" alt="Plastic Cutlery">
+                        <span>Plastic Cutlery</span>
+                        <input type="number" name="plastic_cutlery" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQCUEqF9r0-BF9H_H8rADIXLD3drefvvjHMg&s" alt="Styrofoam Containers">
+                        <span>Styrofoam Containers</span>
+                        <input type="number" name="styrofoam_containers" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_sn6Roa-qYkfZde4Uf3_qQeHAV7v882RNwA&s" alt="Paper Plates">
+                        <span>Paper Plates</span>
+                        <input type="number" name="paper_plates" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://nutritionsource.hsph.harvard.edu/wp-content/uploads/2024/11/AdobeStock_308543231-1024x681.jpeg" alt="Food Waste">
+                        <span>Food Waste</span>
+                        <input type="number" name="food_waste" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWobDwkFzVsQ-aL7gpxuUaUMbBetg5dw9TgA&s" alt="Used Napkins">
+                        <span>Used Napkins</span>
+                        <input type="number" name="used_napkins" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://m.media-amazon.com/images/I/91Q-iPVi7UL._AC_UF894,1000_QL80_.jpg" alt="Broken Glass">
+                        <span>Broken Glass</span>
+                        <input type="number" name="broken_glass" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2024/9/447894322/LU/AK/DA/37345802/blue-plastic-carry-bag-500x500.jpg" alt="Plastic Bags">
+                        <span>Plastic Bags</span>
+                        <input type="number" name="plastic_bags" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://5.imimg.com/data5/SH/BS/MY-4942967/infant-baby-diaper-500x500.jpg" alt="Disposable Diapers">
+                        <span>Disposable Diapers</span>
+                        <input type="number" name="disposable_diapers" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://cdn.shopify.com/s/files/1/0558/6413/1764/files/27_00f8ca2f-3394-41b1-a45a-49bd13e110b2.jpg" alt="Food Packaging">
+                        <span>Food Packaging</span>
+                        <input type="number" name="food_packaging" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/packaging-security-bag/v/q/c/8-x-10-1-bubble-wrap-roll-for-packing-purposes-bubble-wrap-30-ft-original-imahyj87dmazvv6t.jpeg?q=90&crop=false" alt="Bubble Wrap">
+                        <span>Bubble Wrap</span>
+                        <input type="number" name="bubble_wrap" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN5jNXhgUtkSJZl596F0zkD4lW1A-w4yqlvw&s" alt="Broken Appliances">
+                        <span>Broken Appliances</span>
+                        <input type="number" name="broken_appliances" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHGe0ksi419rKueP3oPzCbDI73TnQyv2eV5g&s" alt="Expired Medications">
+                        <span>Expired Medications</span>
+                        <input type="number" name="expired_medications" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://i.guim.co.uk/img/media/f23222d6d5f8815fb443818767faac2ddbae3b1b/0_445_6000_3601/master/6000.jpg?width=465&dpr=1&s=none&crop=none" alt="Single-Use Straws">
+                        <span>Single-Use Straws</span>
+                        <input type="number" name="single_use_straws" min="0" value="0" placeholder="Quantity">
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <button type="submit">Submit Selection</button>
+            </div>
+        </form>
+    </section>
+
+    <script>
+        document.getElementById('nonReusableItemsForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let nonReusableItems = {};
+            const formData = new FormData(this);
+
+            formData.forEach((value, key) => {
+                nonReusableItems[key] = value;
+            });
+
+            localStorage.setItem('nonReusableItems', JSON.stringify(nonReusableItems));
+
+            window.location.href = 'dashboard.html'; // Redirect to dashboard
+        });
+    </script>
+
+</body>
+</html>
