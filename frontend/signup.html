@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup - Garbage Collection Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: 0 auto;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="password"] {
+            width: 95%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .signup-link {
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        async function signup() {
+            try {
+                var username = document.getElementById("username").value;
+                var email = document.getElementById("email").value;
+                var phone = document.getElementById("phone").value;
+                var password = document.getElementById("password").value;
+
+                console.log("Attempting signup...");
+                console.log("API URL:", "http://localhost:3000/api/signup");
+
+                const response = await fetch("http://localhost:3000/api/signup", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ username, email, phone, password })
+                });
+
+                console.log("Response status:", response.status);
+                const data = await response.json();
+                console.log("Response data:", data);
+
+                if (response.ok) {
+                    alert("Signup successful!");
+                    window.location.href = "/login.html";
+                } else {
+                    alert(data.error || "Signup failed");
+                }
+            } catch (error) {
+                console.error("Signup error:", error);
+                alert("Server error. Please try again.");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Signup - Garbage Collection Service</h2>
+        <form onsubmit="event.preventDefault(); signup();">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="tel" id="phone" placeholder="Phone Number" required pattern="^\d{10}$" title="Phone number must be 10 digits">
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Signup</button>
+        </form>
+        <div class="signup-link">
+            <p>Already have an account? <a href="/login.html">Login here</a></p> <!-- Correct link to login.html -->
+        </div>
+    </div>
+
+</body>
+</html>

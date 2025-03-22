@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Garbage Collection Service</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: #28a745;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        .home-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 20px;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .card h2 {
+            font-size: 24px;
+            color: #333;
+        }
+        .card p {
+            color: #777;
+        }
+        .card a {
+            display: inline-block;
+            margin-top: 15px;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .card a:hover {
+            background-color: #218838;
+        }
+
+        /* Button for Dashboard */
+        .dashboard-button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .dashboard-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header>Garbage Collection Service - Home</header>
+
+    <div class="container">
+        <div class="home-content">
+            <!-- Reusable Card -->
+            <div class="card">
+                <img src="https://www.zenpack.us/blog/wp-content/uploads/2021/11/Recycling_Symbol.svg-1024x966.png" alt="Reusable Items">
+                <h2>Reusable</h2>
+                <p>Learn about how we manage reusable garbage and contribute to recycling efforts.</p>
+                <a href="reusable.html">Open Reusable Page</a>
+            </div>
+
+            <!-- Non-Reusable Card -->
+            <div class="card">
+                <img src="https://www.shutterstock.com/image-vector/do-not-recycle-symbol-no-600nw-786321487.jpg" alt="Non-Reusable Items">
+                <h2>Non-Reusable</h2>
+                <p>Learn about non-reusable garbage collection and how we dispose of waste responsibly.</p>
+                <a href="non-reusable.html">Open Non-Reusable Page</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Button to navigate to Dashboard -->
+    <div style="text-align: center; padding-top: 20px;">
+        <button class="dashboard-button" onclick="window.location.href='dashboard.html'">Go to Dashboard</button>
+    </div>
+
+    <!-- Add to home.html -->
+    <div class="nav-buttons" style="text-align: center; margin-top: 20px;">
+        <button onclick="window.location.href='reusable.html'" class="button">Start Collection</button>
+        <button onclick="window.location.href='dashboard.html'" class="button">View Dashboard</button>
+        <button onclick="logout()" class="button">Logout</button>
+    </div>
+
+    <script>
+        function logout() {
+            localStorage.removeItem('userLoggedIn');
+            localStorage.removeItem('reusableItems');
+            localStorage.removeItem('nonReusableItems');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

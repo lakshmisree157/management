@@ -1,0 +1,82 @@
+{
+  "collections": [
+    {
+      "id": "1742619756495",
+      "username": "siri",
+      "timestamp": "2025-03-22T05:02:36.495Z",
+      "reusableItems": {
+        "coffee_filters": "4",
+        "stainless_steel_straws": "1",
+        "shopping_bags": "1",
+        "glass_storage_containers": "6"
+      },
+      "nonReusableItems": {
+        "paper_plates": "7",
+        "used_napkins": "4"
+      }
+    },
+    {
+      "id": "1742619766954",
+      "username": "siri",
+      "timestamp": "2025-03-22T05:02:46.954Z",
+      "reusableItems": {
+        "coffee_filters": "4",
+        "stainless_steel_straws": "1",
+        "shopping_bags": "1",
+        "glass_storage_containers": "6"
+      },
+      "nonReusableItems": {
+        "paper_plates": "7",
+        "used_napkins": "4"
+      }
+    },
+    {
+      "id": "1742619786522",
+      "username": "siri",
+      "timestamp": "2025-03-22T05:03:06.522Z",
+      "reusableItems": {
+        "beeswax_wraps": "4"
+      },
+      "nonReusableItems": {
+        "styrofoam_containers": "3"
+      }
+    },
+    {
+      "id": "1742620117831",
+      "username": "siri",
+      "timestamp": "2025-03-22T05:08:37.831Z",
+      "reusableItems": {
+        "water_bottles": "4",
+        "beeswax_wraps": "3",
+        "cloth_diapers": "2"
+      },
+      "nonReusableItems": {
+        "paper_plates": "3"
+      }
+    },
+    {
+      "id": "1742620334546",
+      "username": "siri",
+      "timestamp": "2025-03-22T05:12:14.546Z",
+      "reusableItems": {
+        "water_bottles": "4"
+      },
+      "nonReusableItems": {
+        "used_napkins": "3"
+      }
+    },
+    {
+      "id": "1742620980813",
+      "username": "siri",
+      "timestamp": "2025-03-22T05:23:00.813Z",
+      "reusableItems": {
+        "water_bottles": "3",
+        "rechargeable_batteries": "2"
+      },
+      "nonReusableItems": {
+        "plastic_cutlery": "3",
+        "used_napkins": "2"
+      }
+    }
+  ]
+}

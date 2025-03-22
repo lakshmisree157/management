@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Waste Collection Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f0f5;
+        }
+
+        header {
+            background: #28a745;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .item-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .item-card img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+
+        .item-info {
+            flex-grow: 1;
+        }
+
+        .item-name {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .item-quantity {
+            color: #28a745;
+            font-size: 1.2em;
+        }
+
+        .summary {
+            background: #e9ecef;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .primary {
+            background: #28a745;
+            color: white;
+        }
+
+        .secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        h2 {
+            color: #28a745;
+            border-bottom: 2px solid #28a745;
+            padding-bottom: 10px;
+        }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .history-table th,
+        .history-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .history-table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .history-table tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .history-table button {
+            padding: 5px 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .history-table button:hover {
+            background-color: #218838;
+        }
+
+        .view-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .view-btn:hover {
+            background: #218838;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal h3 {
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+
+        .modal h4 {
+            color: #333;
+            margin: 15px 0 10px;
+        }
+
+        .modal ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .modal li {
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal button {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        .modal button:hover {
+            background: #5a6268;
+        }
+    </style>
+</head>
+
+<body>
+    <header>Waste Collection Dashboard</header>
+
+    <div class="container">
+        <div class="section">
+            <h2>Report Summary</h2>
+            <div class="summary">
+                <h3>Total Items Collected</h3>
+                <p>Total Reusable Items: <span id="totalReusable">0</span></p>
+                <p>Total Non-Reusable Items: <span id="totalNonReusable">0</span></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Non-Reusable Items</h2>
+            <div id="nonReusableItems" class="items-grid"></div>
+        </div>
+
+        <div class="section">
+            <h2>Reusable Items</h2>
+            <div id="reusableItems" class="items-grid"></div>
+        </div>
+
+        <div class="section">
+            <div id="collectionHistory"></div>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="button primary" onclick="window.location.href='home.html'">Back to Home</button>
+            <button class="button secondary" onclick="window.location.href='reusable.html'">New Collection</button>
+            <button class="button danger" onclick="clearCollection()">Clear Data</button>
+        </div>
+    </div>
+
+    <script>
+        // Keep track of image URLs
+        const itemImages = {
+            disposable_water_bottles: "https://image.made-in-china.com/226f3j00aYsiFCVBZoRq/55mm-175g-200g-Pet-Preform-for-5-Gallon-Disposable-Water-Bottle.webp",
+            plastic_cutlery: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNDqJKfzXpvqdxxjo6H7IVufuj_aWqoYsV7A&s",
+            styrofoam_containers: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQCUEqF9r0-BF9H_H8rADIXLD3drefvvjHMg&s",
+            paper_plates: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_sn6Roa-qYkfZde4Uf3_qQeHAV7v882RNwA&s",
+            food_waste: "https://nutritionsource.hsph.harvard.edu/wp-content/uploads/2024/11/AdobeStock_308543231-1024x681.jpeg",
+            used_napkins: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWobDwkFzVsQ-aL7gpxuUaUMbBetg5dw9TgA&s",
+            broken_glass: "https://m.media-amazon.com/images/I/91Q-iPVi7UL._AC_UF894,1000_QL80_.jpg",
+            plastic_bags: "https://5.imimg.com/data5/SELLER/Default/2024/9/447894322/LU/AK/DA/37345802/blue-plastic-carry-bag-500x500.jpg",
+            disposable_diapers: "https://5.imimg.com/data5/SH/BS/MY-4942967/infant-baby-diaper-500x500.jpg",
+            food_packaging: "https://cdn.shopify.com/s/files/1/0558/6413/1764/files/27_00f8ca2f-3394-41b1-a45a-49bd13e110b2.jpg",
+            bubble_wrap: "https://rukminim2.flixcart.com/image/850/1000/xif0q/packaging-security-bag/v/q/c/8-x-10-1-bubble-wrap-roll-for-packing-purposes-bubble-wrap-30-ft-original-imahyj87dmazvv6t.jpeg?q=90&crop=false",
+            broken_appliances: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN5jNXhgUtkSJZl596F0zkD4lW1A-w4yqlvw&s",
+            expired_medications: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHGe0ksi419rKueP3oPzCbDI73TnQyv2eV5g&s",
+            single_use_straws: "https://i.guim.co.uk/img/media/f23222d6d5f8815fb443818767faac2ddbae3b1b/0_445_6000_3601/master/6000.jpg?width=465&dpr=1&s=none&crop=none",
+
+            //reuable items
+
+            // Reusable items
+            water_bottles: "https://m.media-amazon.com/images/I/41VuMqAi13L._AC_UF1000,1000_QL80_.jpg",
+            beeswax_wraps: "https://brownliving.in/cdn/shop/products/starter-set-3-assorted-smlmadhu-wrap-reusable-beeswax-wraps-uc-54-mws30f-food-wraps-brown-living-917733.jpg?v=1699341183",
+            coffee_filters: "https://m.media-amazon.com/images/I/71EImCMQtkL._AC_UF894,1000_QL80_.jpg",
+            sandwich_bags: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSSXwkeB4mCMfsg1Yxgorx6g7XvmeMCuK-og&s",
+            cloth_napkins: "https://images-cdn.ubuy.co.in/633ffd6b46ebbd06032a33d6-washable-ultra-soft-durable-cloth.jpg",
+            stainless_steel_straws: "https://kitchenmart.co.in/cdn/shop/products/kitchen-mart-reusable-stainless-steel-drinking-straws-2-straight-2-bend-and-1-cleaning-brush-straw-2s-2b-1brush-15253753167962_600x.jpg?v=1607744098",
+            shopping_bags: "https://m.media-amazon.com/images/I/816NB93WTqL._AC_UY1100_.jpg",
+            glass_storage_containers: "https://good-homes.in/cdn/shop/products/PM-PARI300-CUBE-2-1_db239ffe-08e9-41a7-b2ad-37beb336ebf6_800x.jpg?v=1630743757",
+            produce_bags: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPQIv_U4NxQRfFAlUQ4Rk3gnzEg68xGGr2yA&s",
+            cloth_diapers: "https://m.media-amazon.com/images/I/613e11+A4HL.jpg",
+            rechargeable_batteries: "https://rukminim2.flixcart.com/image/850/1000/xif0q/camera-battery-charger/battery-charger/z/c/n/3600mah-high-power-aa-rechargeable-lithium-ion-battery-with-c-original-imah3q68xbsydcwf.jpeg?q=20&crop=false",
+            plastic_bottles: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg46WaL8PMPFi5T2dB3zxW5AvHpIuDmjTKqg&s",
+            paper_towel_rolls: "https://rukminim2.flixcart.com/image/850/1000/ktlu9ow0/toilet-paper-roll/r/l/4/toilet-tissue-rolls-with-100-natural-tissue-extra-soft-tissue-original-imag6wuvsphyvm3z.jpeg?q=90&crop=false",
+            old_magazines: "https://images.squarespace-cdn.com/content/v1/55abe9c1e4b03d37e326b3ed/1545948419818-7MXCZQ885478L5WXG9YK/old-magazines-for-collage.jpg"
+
+
+            // ...keep all other image URLs from your original file...
+        };
+
+        function createItemCard(name, quantity, imageUrl) {
+            return `
+                <div class="item-card">
+                    <img src="${imageUrl}" alt="${name}">
+                    <div class="item-info">
+                        <div class="item-name">${name.replace(/_/g, ' ').toUpperCase()}</div>
+                        <div class="item-quantity">${quantity}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        window.onload = async function () {
+            const reusableItems = JSON.parse(localStorage.getItem('reusableItems') || '{}');
+            const nonReusableItems = JSON.parse(localStorage.getItem('nonReusableItems') || '{}');
+
+            const reusableContainer = document.getElementById('reusableItems');
+            const nonReusableContainer = document.getElementById('nonReusableItems');
+
+            let totalReusable = 0;
+            let totalNonReusable = 0;
+
+            // Display non-reusable items
+            Object.entries(nonReusableItems).forEach(([key, value]) => {
+                const quantity = parseInt(value);
+                if (quantity > 0) {
+                    totalNonReusable += quantity;
+                    nonReusableContainer.innerHTML += createItemCard(key, quantity, itemImages[key] || '');
+                }
+            });
+
+            // Display reusable items
+            Object.entries(reusableItems).forEach(([key, value]) => {
+                const quantity = parseInt(value);
+                if (quantity > 0) {
+                    totalReusable += quantity;
+                    reusableContainer.innerHTML += createItemCard(key, quantity, itemImages[key] || '');
+                }
+            });
+
+            // Update totals
+            document.getElementById('totalReusable').textContent = totalReusable;
+            document.getElementById('totalNonReusable').textContent = totalNonReusable;
+
+            // Load collection history
+            await loadCollectionHistory();
+
+            // Auto-save collection if items exist
+            if (Object.keys(reusableItems).length > 0 || Object.keys(nonReusableItems).length > 0) {
+                await saveCollection();
+            }
+        };
+
+        function clearCollection() {
+            if (confirm('Are you sure you want to clear all collection data?')) {
+                localStorage.removeItem('reusableItems');
+                localStorage.removeItem('nonReusableItems');
+                window.location.reload();
+            }
+        }
+
+        // Update the saveCollection function
+
+        async function saveCollection() {
+            try {
+                const username = localStorage.getItem('username');
+                const allReusableItems = JSON.parse(localStorage.getItem('reusableItems') || '{}');
+                const allNonReusableItems = JSON.parse(localStorage.getItem('nonReusableItems') || '{}');
+
+                // Filter out zero values
+                const reusableItems = Object.fromEntries(
+                    Object.entries(allReusableItems)
+                        .filter(([_, value]) => parseInt(value) > 0)
+                );
+
+                const nonReusableItems = Object.fromEntries(
+                    Object.entries(allNonReusableItems)
+                        .filter(([_, value]) => parseInt(value) > 0)
+                );
+
+                const response = await fetch('http://localhost:3000/api/collections', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username,
+                        reusableItems,
+                        nonReusableItems
+                    })
+                });
+
+                if (response.ok) {
+                    console.log('Collection saved successfully');
+                    await loadCollectionHistory();
+                } else {
+                    throw new Error('Failed to save collection');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to save collection: ' + error.message);
+            }
+        }
+
+        // Add function to display collection history
+        async function loadCollectionHistory() {
+            try {
+                const username = localStorage.getItem('username');
+                const response = await fetch(`http://localhost:3000/api/collections/${username}`);
+                const collections = await response.json();
+
+                const historyContainer = document.getElementById('collectionHistory');
+                historyContainer.innerHTML = `
+                    <h2>Collection History</h2>
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Total Reusable Items</th>
+                                <th>Total Non-Reusable Items</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${collections.map(collection => {
+                    const totalReusable = Object.values(collection.reusableItems)
+                        .reduce((sum, value) => sum + parseInt(value), 0);
+                    const totalNonReusable = Object.values(collection.nonReusableItems)
+                        .reduce((sum, value) => sum + parseInt(value), 0);
+
+                    return `
+                                    <tr>
+                                        <td>${new Date(collection.timestamp).toLocaleString()}</td>
+                                        <td>${totalReusable}</td>
+                                        <td>${totalNonReusable}</td>
+                                        <td>
+                                            <button class="view-btn" onclick='showDetails(${JSON.stringify(collection)})'>
+                                                View Details
+                                            </button>
+                                        </td>
+                                    </tr>
+                                `;
+                }).join('')}
+                        </tbody>
+                    </table>
+                `;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        function showDetails(collection) {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <h3>Collection Details - ${new Date(collection.timestamp).toLocaleString()}</h3>
+                    
+                    <h4>Reusable Items:</h4>
+                    <ul>
+                        ${Object.entries(collection.reusableItems)
+                    .map(([item, quantity]) =>
+                        `<li>${item.replace(/_/g, ' ').toUpperCase()}: ${quantity}</li>`
+                    ).join('')}
+                    </ul>
+
+                    <h4>Non-Reusable Items:</h4>
+                    <ul>
+                        ${Object.entries(collection.nonReusableItems)
+                    .map(([item, quantity]) =>
+                        `<li>${item.replace(/_/g, ' ').toUpperCase()}: ${quantity}</li>`
+                    ).join('')}
+                    </ul>
+
+                    <button onclick="this.parentElement.parentElement.remove()">Close</button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+    </script>
+</body>
+
+</html>

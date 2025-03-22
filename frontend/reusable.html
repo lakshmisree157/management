@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Reusable Items - Garbage Collection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f0f5;
+            color: #333;
+        }
+
+        header {
+            background: #28a745;
+            color: white;
+            padding: 15px;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .section-title {
+            color: #2c6b2f;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .reusable-items {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .reusable-items ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .reusable-items li {
+            padding: 12px 0;
+            text-align: left;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .reusable-items li:last-child {
+            border-bottom: none;
+        }
+
+        .reusable-items img {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+
+        .reusable-items input {
+            width: 80px;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        button {
+            background: #28a745;
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-top: 30px;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        .home-waste {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 2px solid #007bff;
+        }
+
+        .home-waste ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .home-waste li {
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .home-waste li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>Select Your Reusable Items</header>
+
+    <section class="container">
+        <form id="reusableItemsForm" action="submission.html" method="POST">
+
+            <div class="section reusable-items">
+                <h3 class="section-title">Reusable Items</h3>
+                <ul>
+                    <li>
+                        <img src="https://m.media-amazon.com/images/I/41VuMqAi13L._AC_UF1000,1000_QL80_.jpg" alt="Reusable Water Bottles">
+                        <span>Reusable Water Bottles</span>
+                        <input type="number" name="water_bottles" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://brownliving.in/cdn/shop/products/starter-set-3-assorted-smlmadhu-wrap-reusable-beeswax-wraps-uc-54-mws30f-food-wraps-brown-living-917733.jpg?v=1699341183" alt="Beeswax Food Wraps">
+                        <span>Beeswax Food Wraps</span>
+                        <input type="number" name="beeswax_wraps" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://m.media-amazon.com/images/I/71EImCMQtkL._AC_UF894,1000_QL80_.jpg" alt="Reusable Coffee Filters">
+                        <span>Reusable Coffee Filters</span>
+                        <input type="number" name="coffee_filters" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSSXwkeB4mCMfsg1Yxgorx6g7XvmeMCuK-og&s" alt="Reusable Sandwich Bags">
+                        <span>Reusable Sandwich Bags</span>
+                        <input type="number" name="sandwich_bags" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://images-cdn.ubuy.co.in/633ffd6b46ebbd06032a33d6-washable-ultra-soft-durable-cloth.jpg" alt="Cloth Napkins">
+                        <span>Cloth Napkins</span>
+                        <input type="number" name="cloth_napkins" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://kitchenmart.co.in/cdn/shop/products/kitchen-mart-reusable-stainless-steel-drinking-straws-2-straight-2-bend-and-1-cleaning-brush-straw-2s-2b-1brush-15253753167962_600x.jpg?v=1607744098" alt="Stainless Steel Straws">
+                        <span>Stainless Steel Straws</span>
+                        <input type="number" name="stainless_steel_straws" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://m.media-amazon.com/images/I/816NB93WTqL._AC_UY1100_.jpg" alt="Reusable Shopping Bags">
+                        <span>Reusable Shopping Bags</span>
+                        <input type="number" name="shopping_bags" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://good-homes.in/cdn/shop/products/PM-PARI300-CUBE-2-1_db239ffe-08e9-41a7-b2ad-37beb336ebf6_800x.jpg?v=1630743757" alt="Glass Storage Containers">
+                        <span>Glass Storage Containers</span>
+                        <input type="number" name="glass_storage_containers" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPQIv_U4NxQRfFAlUQ4Rk3gnzEg68xGGr2yA&s" alt="Reusable Produce Bags">
+                        <span>Reusable Produce Bags</span>
+                        <input type="number" name="produce_bags" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://m.media-amazon.com/images/I/613e11+A4HL.jpg" alt="Cloth Diapers">
+                        <span>Cloth Diapers</span>
+                        <input type="number" name="cloth_diapers" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://rukminim2.flixcart.com/image/850/1000/xif0q/camera-battery-charger/battery-charger/z/c/n/3600mah-high-power-aa-rechargeable-lithium-ion-battery-with-c-original-imah3q68xbsydcwf.jpeg?q=20&crop=false" alt="Rechargeable Batteries">
+                        <span>Rechargeable Batteries</span>
+                        <input type="number" name="rechargeable_batteries" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg46WaL8PMPFi5T2dB3zxW5AvHpIuDmjTKqg&s" alt="Plastic Bottles">
+                        <span>Plastic Bottles</span>
+                        <input type="number" name="plastic_bottles" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://rukminim2.flixcart.com/image/850/1000/ktlu9ow0/toilet-paper-roll/r/l/4/toilet-tissue-rolls-with-100-natural-tissue-extra-soft-tissue-original-imag6wuvsphyvm3z.jpeg?q=90&crop=false" alt="Paper Towel Rolls">
+                        <span>Paper Towel Rolls</span>
+                        <input type="number" name="paper_towel_rolls" min="0" value="0" placeholder="Quantity">
+                    </li>
+                    <li>
+                        <img src="https://images.squarespace-cdn.com/content/v1/55abe9c1e4b03d37e326b3ed/1545948419818-7MXCZQ885478L5WXG9YK/old-magazines-for-collage.jpg" alt="Old Magazines">
+                        <span>Old Magazines</span>
+                        <input type="number" name="old_magazines" min="0" value="0" placeholder="Quantity">
+                    </li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <button type="submit">Submit Selection</button>
+            </div>
+        </form>
+    </section>
+
+    <script>
+        document.getElementById('reusableItemsForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let reusableItems = {};
+            const formData = new FormData(this);
+
+            formData.forEach((value, key) => {
+                reusableItems[key] = value;
+            });
+
+            localStorage.setItem('reusableItems', JSON.stringify(reusableItems));
+            window.location.href = 'non-reusable.html'; // Redirect to non-reusable form
+        });
+
+    </script>
+
+</body>
+</html>
