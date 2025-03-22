@@ -108,110 +108,6 @@
             border-bottom: 2px solid #28a745;
             padding-bottom: 10px;
         }
-
-        .history-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        .history-table th,
-        .history-table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .history-table th {
-            background-color: #f8f9fa;
-            font-weight: bold;
-        }
-
-        .history-table tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        .history-table button {
-            padding: 5px 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        .history-table button:hover {
-            background-color: #218838;
-        }
-
-        .view-btn {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .view-btn:hover {
-            background: #218838;
-        }
-
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .modal h3 {
-            color: #28a745;
-            margin-bottom: 15px;
-        }
-
-        .modal h4 {
-            color: #333;
-            margin: 15px 0 10px;
-        }
-
-        .modal ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .modal li {
-            padding: 5px 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .modal button {
-            background: #6c757d;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            margin-top: 15px;
-            cursor: pointer;
-        }
-
-        .modal button:hover {
-            background: #5a6268;
-        }
     </style>
 </head>
 
@@ -238,13 +134,9 @@
             <div id="reusableItems" class="items-grid"></div>
         </div>
 
-        <div class="section">
-            <div id="collectionHistory"></div>
-        </div>
-
         <div class="nav-buttons">
             <button class="button primary" onclick="window.location.href='home.html'">Back to Home</button>
-            <button class="button secondary" onclick="window.location.href='reusable.html'">New Collection</button>
+            <button class="button secondary" onclick="window.location.href='reusable.html'">Add More Items</button>
             <button class="button danger" onclick="clearCollection()">Clear Data</button>
         </div>
     </div>
@@ -265,26 +157,7 @@
             bubble_wrap: "https://rukminim2.flixcart.com/image/850/1000/xif0q/packaging-security-bag/v/q/c/8-x-10-1-bubble-wrap-roll-for-packing-purposes-bubble-wrap-30-ft-original-imahyj87dmazvv6t.jpeg?q=90&crop=false",
             broken_appliances: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN5jNXhgUtkSJZl596F0zkD4lW1A-w4yqlvw&s",
             expired_medications: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHGe0ksi419rKueP3oPzCbDI73TnQyv2eV5g&s",
-            single_use_straws: "https://i.guim.co.uk/img/media/f23222d6d5f8815fb443818767faac2ddbae3b1b/0_445_6000_3601/master/6000.jpg?width=465&dpr=1&s=none&crop=none",
-
-            //reuable items
-
-            // Reusable items
-            water_bottles: "https://m.media-amazon.com/images/I/41VuMqAi13L._AC_UF1000,1000_QL80_.jpg",
-            beeswax_wraps: "https://brownliving.in/cdn/shop/products/starter-set-3-assorted-smlmadhu-wrap-reusable-beeswax-wraps-uc-54-mws30f-food-wraps-brown-living-917733.jpg?v=1699341183",
-            coffee_filters: "https://m.media-amazon.com/images/I/71EImCMQtkL._AC_UF894,1000_QL80_.jpg",
-            sandwich_bags: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSSXwkeB4mCMfsg1Yxgorx6g7XvmeMCuK-og&s",
-            cloth_napkins: "https://images-cdn.ubuy.co.in/633ffd6b46ebbd06032a33d6-washable-ultra-soft-durable-cloth.jpg",
-            stainless_steel_straws: "https://kitchenmart.co.in/cdn/shop/products/kitchen-mart-reusable-stainless-steel-drinking-straws-2-straight-2-bend-and-1-cleaning-brush-straw-2s-2b-1brush-15253753167962_600x.jpg?v=1607744098",
-            shopping_bags: "https://m.media-amazon.com/images/I/816NB93WTqL._AC_UY1100_.jpg",
-            glass_storage_containers: "https://good-homes.in/cdn/shop/products/PM-PARI300-CUBE-2-1_db239ffe-08e9-41a7-b2ad-37beb336ebf6_800x.jpg?v=1630743757",
-            produce_bags: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPQIv_U4NxQRfFAlUQ4Rk3gnzEg68xGGr2yA&s",
-            cloth_diapers: "https://m.media-amazon.com/images/I/613e11+A4HL.jpg",
-            rechargeable_batteries: "https://rukminim2.flixcart.com/image/850/1000/xif0q/camera-battery-charger/battery-charger/z/c/n/3600mah-high-power-aa-rechargeable-lithium-ion-battery-with-c-original-imah3q68xbsydcwf.jpeg?q=20&crop=false",
-            plastic_bottles: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg46WaL8PMPFi5T2dB3zxW5AvHpIuDmjTKqg&s",
-            paper_towel_rolls: "https://rukminim2.flixcart.com/image/850/1000/ktlu9ow0/toilet-paper-roll/r/l/4/toilet-tissue-rolls-with-100-natural-tissue-extra-soft-tissue-original-imag6wuvsphyvm3z.jpeg?q=90&crop=false",
-            old_magazines: "https://images.squarespace-cdn.com/content/v1/55abe9c1e4b03d37e326b3ed/1545948419818-7MXCZQ885478L5WXG9YK/old-magazines-for-collage.jpg"
-
+            single_use_straws: "https://i.guim.co.uk/img/media/f23222d6d5f8815fb443818767faac2ddbae3b1b/0_445_6000_3601/master/6000.jpg?width=465&dpr=1&s=none&crop=none"
 
             // ...keep all other image URLs from your original file...
         };
@@ -301,7 +174,7 @@
             `;
         }
 
-        window.onload = async function () {
+        window.onload = function () {
             const reusableItems = JSON.parse(localStorage.getItem('reusableItems') || '{}');
             const nonReusableItems = JSON.parse(localStorage.getItem('nonReusableItems') || '{}');
 
@@ -332,14 +205,6 @@
             // Update totals
             document.getElementById('totalReusable').textContent = totalReusable;
             document.getElementById('totalNonReusable').textContent = totalNonReusable;
-
-            // Load collection history
-            await loadCollectionHistory();
-
-            // Auto-save collection if items exist
-            if (Object.keys(reusableItems).length > 0 || Object.keys(nonReusableItems).length > 0) {
-                await saveCollection();
-            }
         };
 
         function clearCollection() {
@@ -348,125 +213,6 @@
                 localStorage.removeItem('nonReusableItems');
                 window.location.reload();
             }
-        }
-
-        // Update the saveCollection function
-
-        async function saveCollection() {
-            try {
-                const username = localStorage.getItem('username');
-                const allReusableItems = JSON.parse(localStorage.getItem('reusableItems') || '{}');
-                const allNonReusableItems = JSON.parse(localStorage.getItem('nonReusableItems') || '{}');
-
-                // Filter out zero values
-                const reusableItems = Object.fromEntries(
-                    Object.entries(allReusableItems)
-                        .filter(([_, value]) => parseInt(value) > 0)
-                );
-
-                const nonReusableItems = Object.fromEntries(
-                    Object.entries(allNonReusableItems)
-                        .filter(([_, value]) => parseInt(value) > 0)
-                );
-
-                const response = await fetch('http://localhost:3000/api/collections', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        username,
-                        reusableItems,
-                        nonReusableItems
-                    })
-                });
-
-                if (response.ok) {
-                    console.log('Collection saved successfully');
-                    await loadCollectionHistory();
-                } else {
-                    throw new Error('Failed to save collection');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Failed to save collection: ' + error.message);
-            }
-        }
-
-        // Add function to display collection history
-        async function loadCollectionHistory() {
-            try {
-                const username = localStorage.getItem('username');
-                const response = await fetch(`http://localhost:3000/api/collections/${username}`);
-                const collections = await response.json();
-
-                const historyContainer = document.getElementById('collectionHistory');
-                historyContainer.innerHTML = `
-                    <h2>Collection History</h2>
-                    <table class="history-table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Total Reusable Items</th>
-                                <th>Total Non-Reusable Items</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${collections.map(collection => {
-                    const totalReusable = Object.values(collection.reusableItems)
-                        .reduce((sum, value) => sum + parseInt(value), 0);
-                    const totalNonReusable = Object.values(collection.nonReusableItems)
-                        .reduce((sum, value) => sum + parseInt(value), 0);
-
-                    return `
-                                    <tr>
-                                        <td>${new Date(collection.timestamp).toLocaleString()}</td>
-                                        <td>${totalReusable}</td>
-                                        <td>${totalNonReusable}</td>
-                                        <td>
-                                            <button class="view-btn" onclick='showDetails(${JSON.stringify(collection)})'>
-                                                View Details
-                                            </button>
-                                        </td>
-                                    </tr>
-                                `;
-                }).join('')}
-                        </tbody>
-                    </table>
-                `;
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        }
-
-        function showDetails(collection) {
-            const modal = document.createElement('div');
-            modal.className = 'modal';
-            modal.innerHTML = `
-                <div class="modal-content">
-                    <h3>Collection Details - ${new Date(collection.timestamp).toLocaleString()}</h3>
-                    
-                    <h4>Reusable Items:</h4>
-                    <ul>
-                        ${Object.entries(collection.reusableItems)
-                    .map(([item, quantity]) =>
-                        `<li>${item.replace(/_/g, ' ').toUpperCase()}: ${quantity}</li>`
-                    ).join('')}
-                    </ul>
-
-                    <h4>Non-Reusable Items:</h4>
-                    <ul>
-                        ${Object.entries(collection.nonReusableItems)
-                    .map(([item, quantity]) =>
-                        `<li>${item.replace(/_/g, ' ').toUpperCase()}: ${quantity}</li>`
-                    ).join('')}
-                    </ul>
-
-                    <button onclick="this.parentElement.parentElement.remove()">Close</button>
-                </div>
-            `;
-            document.body.appendChild(modal);
         }
     </script>
 </body>

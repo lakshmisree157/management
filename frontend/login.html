@@ -84,7 +84,6 @@
 
                 if (response.ok) {
                     localStorage.setItem("userLoggedIn", "true");
-                    localStorage.setItem("username", username);
                     window.location.href = "/home.html";  // Changed to home.html
                 } else {
                     document.getElementById("errorMessage").textContent = data.error || "Login failed";
